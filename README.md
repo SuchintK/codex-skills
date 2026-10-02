@@ -20,3 +20,7 @@ Start a new Codex session to load the skill, then invoke it with `$neuronize` or
 ## Add another skill
 
 Create `skills/<skill-name>/SKILL.md` with YAML frontmatter containing a matching `name` and a clear `description`. Put supporting documentation in that skill's `references/` directory when needed.
+
+## License
+
+[MIT](LICENSE)
