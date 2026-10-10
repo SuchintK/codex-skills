@@ -1,6 +1,6 @@
 ---
 name: adr-management
-description: Evaluate architectural significance and manage Architecture Decision Records (ADRs) in software repositories. Use proactively when implementing or reviewing changes to system boundaries, APIs, persistence, messaging, authentication, infrastructure, major dependencies, or cross-cutting conventions—even if the user has not mentioned ADRs. Also use when proposing, reviewing, writing, deprecating, or superseding an ADR. Check existing decisions, challenge both positive and negative recommendations, and never create records automatically during ordinary development.
+description: Evaluate architectural significance and manage Architecture Decision Records (ADRs) in software repositories. Use proactively when implementing or reviewing changes to system boundaries, APIs, persistence, messaging, authentication, infrastructure, major dependencies, or cross-cutting conventions—even if the user has not mentioned ADRs. Also use when proposing, reviewing, writing, deprecating, or superseding an ADR.
 ---
 
 # ADR Management
@@ -11,8 +11,6 @@ This skill has two modes:
 
 1. **Proactive assessment:** During architecture-significant implementation, planning, or PR review, determine whether a decision needs recording **without waiting for the user to mention ADRs**. Normally this mode is read-only.
 2. **ADR management:** When authorized, propose, create, review, deprecate, or supersede ADRs, keeping decision history and indexes correct.
-
-A small rule in global `~/.codex/AGENTS.md` should prompt the proactive scan. Skill selection alone is not a reliable always-on trigger; if the skill is not loaded, that global rule should still flag material architectural decisions. Do not claim the model's own review eliminates bias.
 
 ## Non-negotiable rules
 
@@ -62,18 +60,6 @@ Choose one assessment:
 - **ADR worth considering:** Architectural effects are plausible, but scope, assumptions, or documentation value are uncertain.
 - **No new ADR needed:** Routine/local change, or an existing ADR already captures the rationale (reference it if useful).
 
-### Bias and false-positive/false-negative check
-
-Before communicating an assessment, independently revisit the evidence:
-
-1. **Reconstruct the change:** What objectively changes in boundaries, contracts, constraints, and operating model? Check the planned work **and** the actual diff when available; do not merely endorse the implementer's preferred option.
-2. **Argue against your initial answer:**
-   - If leaning **no ADR**, could this silently introduce a long-lived convention, external commitment, expensive reversal, or contradiction with an accepted ADR?
-   - If leaning **ADR**, is this actually routine implementation, an already-established decision, a temporary experiment, or a trivial choice unlikely to help future maintainers?
-3. **Consider the status quo** as an alternative where meaningful. Do not manufacture options just to fill a template.
-4. **Check decision history** and distinguish an undocumented new decision from implementing an existing accepted one.
-5. **Identify gaps honestly.** Mark uncertain claims and recommend human or independent review for high-impact decisions; a second pass by the same model is not an independent reviewer.
-
 ### Communication policy
 
 - **Routine work / no ADR:** Proceed normally. Do not add an ADR section to every response or generate files.
@@ -97,18 +83,17 @@ Next step: <reference existing ADR | evaluate options | request approval | none>
 1. **Discover:** Locate repository instructions, relevant architecture/code/contracts, current and historical ADRs, and the index. For cross-repository decisions, locate the authoritative owner; avoid duplicate canonical ADRs.
 2. **Classify:** New decision, implementation of an existing decision, clarification, deprecation, or proposed replacement? If an accepted ADR still applies, prefer linking to it.
 3. **Evaluate:** State the problem, decision drivers, constraints, scope, uncertainty, and viable options (including keeping the current approach when relevant). Compare benefits, drawbacks, reversibility, migration effects, and what is deliberately sacrificed. Prefer verifiable project evidence.
-4. **Challenge:** Apply the bias check above and test whether documenting this decision would be useful. For a consequential choice, consider an independent technical reviewer or review session.
-5. **Agree:** Present recommendation and alternatives. If the user's request was analysis only, **stop without writes**. Confirm substantive decision and authorization before creating or modifying records. Do not infer accepted status from the fact that implementation exists.
-6. **Record:** Write only authorized changes, using local conventions or the defaults below. One primary architectural decision per record; aim for roughly one page unless complexity demands more.
-7. **Maintain:** Update index and reciprocal references; cross-link real issues, RFCs, and implementation PRs where available. Never invent references.
-8. **Verify:** Check statuses, numbering, links, accuracy, and historical integrity. Report paths changed, status, important evidence gaps, and any pending decision/review.
+4. **Agree:** Present recommendation and alternatives. If the user's request was analysis only, **stop without writes**. Confirm substantive decision and authorization before creating or modifying records. Do not infer accepted status from the fact that implementation exists.
+5. **Record:** Write only authorized changes, using local conventions or the defaults below. One primary architectural decision per record; aim for roughly one page unless complexity demands more.
+6. **Maintain:** Update index and reciprocal references; cross-link real issues, RFCs, and implementation PRs where available. Never invent references.
+7. **Verify:** Check statuses, numbering, links, accuracy, and historical integrity. Report paths changed, status, important evidence gaps, and any pending decision/review.
 
 ## Default location and naming
 
 When the repository has no existing convention:
 
 ```text
-docs/architecture/adr/
+docs/adr/
 ├── README.md                   # ADR index: Number | Decision | Status | Date | Link
 ├── 0001-use-postgresql.md
 └── 0002-adopt-redis-caching.md
@@ -181,12 +166,12 @@ When replacing an accepted decision, **with authorization**:
 
 Never mark an old accepted ADR as `Rejected` merely because a newer decision prevailed. Do not delete old records to clean up the directory.
 
-## PR and design-document integration
+## References
 
-- During significant PR preparation/review, do **not** assume the implementation session's earlier conclusion was correct. Compare the actual change with system boundaries, published contracts, ADRs, and the significance test above.
-- An implementation of an accepted decision usually needs a **link**, not a fresh ADR. When the PR introduces an undocumented decision, flag it and seek authorization before writing.
-- The `pr-description` skill can add a concise `Architecture Decision` reference and flag missing ADRs; do not duplicate ADR rationale inside the PR or make every PR have an ADR section.
-- Use RFCs/design docs for proposals and implementation details; use ADRs for durable architectural decisions. Link related documents rather than conflating them.
+When creating or updating an ADR:
+- Reference relevant design documents, RFCs, issues, and implementation PRs when available.
+- Avoid duplicating information already maintained in those documents.
+- Keep references optional and relevant.
 
 ## Final quality check
 
