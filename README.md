@@ -5,6 +5,7 @@ A collection of reusable Codex skills. Each skill has its own directory under `s
 ## Skills
 
 - [`neuronize`](skills/neuronize/SKILL.md) turns technical sources into Obsidian-ready engineering notes focused on practical use in projects.
+- [`adr-management`](skills/adr-management/SKILL.md) helps teams assess, create, and maintain Architecture Decision Records for consequential engineering decisions.
 
 ## Install a skill
 
@@ -12,10 +13,10 @@ Copy the skill directory into your personal Codex skills directory:
 
 ```sh
 mkdir -p ~/.codex/skills
-cp -R skills/neuronize ~/.codex/skills/
+cp -R skills/<skill-name> ~/.codex/skills/
 ```
 
-Start a new Codex session to load the skill, then invoke it with `$neuronize` or provide a relevant technical source.
+Start a new Codex session to load the skill, then invoke it with `$<skill-name>` or make a request that matches its description.
 
 ## Add another skill
 
