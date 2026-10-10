@@ -6,6 +6,7 @@ A collection of reusable Codex skills. Each skill has its own directory under `s
 
 - [`neuronize`](skills/neuronize/SKILL.md) turns technical sources into Obsidian-ready engineering notes focused on practical use in projects.
 - [`adr-management`](skills/adr-management/SKILL.md) helps teams assess, create, and maintain Architecture Decision Records for consequential engineering decisions.
+- [`pr-description`](skills/pr-description/SKILL.md) guides clear, evidence-based pull request descriptions.
 
 ## Install a skill
 
