@@ -136,6 +136,30 @@ Use meaningful analysis, not unfilled placeholders. Adapt headings to repository
 **Negative / Risks**
 - <Trade-offs, accepted costs, operational burden, and migration risks.>
 
+## Deferred Scope
+
+<!-- Optional: Omit if nothing has been explicitly deferred. -->
+
+- <Capability intentionally excluded from the current scope.>
+- <Whether future implementation is committed or merely proposed.>
+
+## Future Considerations
+
+<!-- Optional: Omit if there are no meaningful future considerations. -->
+
+- <Potential architectural improvements or alternatives that may become relevant later.>
+- <Possible future requirements that could affect this decision.>
+
+## Revisit Triggers
+
+<!-- Optional: Omit if no meaningful triggers are identified. -->
+
+Reevaluate this decision if:
+
+- <Specific requirement or constraint changes.>
+- <A measurable technical or operational threshold is reached.>
+- <An assumption underlying this decision becomes invalid.>
+
 ## References
 
 - <Existing ADR, relevant design/RFC, issue, benchmark, PR; omit if none.>
@@ -172,6 +196,11 @@ When creating or updating an ADR:
 - Reference relevant design documents, RFCs, issues, and implementation PRs when available.
 - Avoid duplicating information already maintained in those documents.
 - Keep references optional and relevant.
+
+## Future Scope and Revisit Policy
+- Clearly distinguish committed future decisions from possibilities.
+- Do not turn ADRs into feature backlogs or implementation roadmaps.
+- Include these sections only when they add meaningful context.
 
 ## Final quality check
 
